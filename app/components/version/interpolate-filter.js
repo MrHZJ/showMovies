@@ -1,3 +1,4 @@
+//设计插入的规则
 'use strict';
 
 angular.module('myApp.version.interpolate-filter', [])
