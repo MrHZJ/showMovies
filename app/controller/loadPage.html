@@ -1,15 +1,13 @@
-<div class="content" ng-if="!load">
+<div class="content" ng-if="!load && !detail">
 	<h1 class="title">{{title}}</h1>
 	<ul class="list-group">
-		<li class="list-group-item" ng-repeat="item in data">
+		<li class="list-group-item" ng-repeat="item in data" ng-click="toDetail(item.id)">
 			<span class="badge">{{item.rating.average}}</span>
-			<a href="{{item.alt}}">
+			<!--<a href="#/detail">-->
 				<div class="bs-example" data-example-id="default-media">
 					<div class="media" >
 						<div class="media-left">
-							<a href="#">
-								<img class="media-object" src="{{item.images.small}}" alt="{{item.title}}"  style="width: 64px; height: 100px;">
-							</a>
+							<img class="media-object" src="{{item.images.small}}" alt="{{item.title}}"  style="width: 64px; height: 100px;">
 						</div>
 						<div class="media-body">
 							<h4 class="media-heading">{{item.title}}</h4>
@@ -19,8 +17,9 @@
 						</div>
 					</div>
 				</div>
-			</a>
+		    <!--</a>-->
 		</li>
+
 	</ul>
 
 	<nav aria-label="Page navigation">
@@ -46,7 +45,36 @@
 		</ul>
 	</nav>
 </div>
+<div class="content" id="detail" ng-if="!load && detail">
 
+	<h1 class="title">{{title}}</h1>
+	<!--<ul class="list-group">-->
+		<!--<li class="list-group-item" ng-repeat="item in data">-->
+	<!--<span class="badge">{{detailData.rating.average}}</span>-->
+			<a href="{{detailData.alt}}">
+				<div class="bs-example" data-example-id="default-media">
+					<div class="media" >
+						<div class="media-left">
+							<a href="#">
+								<img class="media-object" width="175" height="300" src="{{detailData.images.small}}" alt="{{title}}">
+							</a>
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">{{item.title}}</h4>
+							<p>类型 : <span>{{detailData.genres.join('、')}} &nbsp;&nbsp;&nbsp;[ <span >{{detailData.countries.join('、')}}</span> ]</span> &nbsp;&nbsp;</p>
+							<p>上映年份 : <span> {{detailData.year}}</span></p>
+							<p>导演 : <span ng-repeat="role in detailData.directors">{{role.name}} <i ng-if="!$last">、</i></span></p>
+							<p>主演 : <span ng-repeat="role in detailData.casts">{{role.name }}<i ng-if="!$last">、</i></span></p>
+							<!--<p>评分 : <span></span></p>-->
+							<p>评分 : <span>{{detailData.rating.average}}</span> &nbsp;&nbsp;&nbsp; 评分人数 ：{{detailData.ratings_count}}</p>
+							<p style="line-height: 2em">简介 : <span >{{detailData.summary}}</span></p>
+						</div>
+					</div>
+				</div>
+			</a>
+		<!--</li>-->
+	<!--</ul>-->
+</div>
 <!--loading-->
 <div id="loading" ng-if="load">
 	<div id="loading-center">

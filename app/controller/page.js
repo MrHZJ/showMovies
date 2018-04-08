@@ -19,6 +19,7 @@
 		//$scope.text = $routeParams.type;
 
 		$scope.title = '';
+		//$scope.data =[{id:1},{id:2},{id:3}];
 		$scope.data = '';
 		$scope.total = '';//总共几条记录
 		$scope.totalPage = '';//总共几页
@@ -27,11 +28,23 @@
 		$scope.page = 1;
 		//console.log($scope.status);
 		$scope.load = true;
+		$scope.detail = false;
+		$scope.detailData = '';
 		function ajax(start,cbFn){
-			//console.log($routeParams);
+			console.log($routeParams);
 			var type = $routeParams.type;
+			var id = $routeParams.id;
+			var url = '';
+			if(!id){
+				url = '//api.douban.com/v2/movie/'+ type;
+				$scope.detail = false;
+			}else {
+				$scope.detail = true;
+				url = '//api.douban.com/v2/movie/'+ 'subject/'+ id;
+			}
 			var parames = {
-				url : '//api.douban.com/v2/movie/'+ type,
+				//url : '//api.douban.com/v2/movie/'+ 'subject/4920389',
+				url : url,
 				data : {
 					"start" : start,
 					"count" : $scope.count
@@ -51,7 +64,8 @@
 			$scope.$http = pageServices.$http(
 				ajax((($routeParams.page - 1) * $scope.count),
 					function(res){
-						//console.log(JSON.stringify(res));
+						console.log(res);
+						$scope.detailData = res;
 						if(!res){
 							return
 						}
@@ -65,6 +79,7 @@
 
 						var pageNum = $routeParams.page;
 
+						/*刷新分页数字*/
 						if(pageNum <= Math.ceil( $scope.count / 2) ){//1 2 3
 							$scope.numBtn = [];
 							for(var i = 0; i < $scope.count ; i++){
@@ -97,7 +112,7 @@
 			);
 		});
 
-
+		/*左右分页按钮*/
 		$scope.checkPage = function(num){
 			var page = $routeParams.page;
 			var type = $routeParams.type;
@@ -135,17 +150,22 @@
 			//	))
 		};
 
-
-
-
+		//分页按钮
 		$scope.pageNum = function(pageNum){
-			//console.log(pageNum);
-			//console.log($scope.totalPage - Math.floor($scope.count / 2));
 			var type = $routeParams.type;
-
 			$route.updateParams({page : pageNum ,type:type});
+		};
+
+		$scope.id = 0;
+		$scope.toDetail = function(id){
+			$scope.id = id;
+			console.log($routeParams)
+			var page = $routeParams.page;
+			var type = $routeParams.type;
+			console.log($scope.id);
+			$route.updateParams({page : page ,type:type, id : $scope.id});
 		}
 
-	}]);
 
+	}]);
 })(angular);

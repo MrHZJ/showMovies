@@ -9,10 +9,15 @@
 		//'movie.top250'
 	])
 	.config(['$routeProvider', function($routeProvider) {
-		$routeProvider.when('/:type/:page', {
+		$routeProvider.when('/:type/:page/:id?', {
 			templateUrl: 'controller/loadPage.html',//路径是以index.html为基础，因为模板放在上面
 			controller: 'pageControllers'
-		}).otherwise({
+		})
+		//	.when('/:type/:page/:action',{
+		//	templateUrl: 'controller/loadPage.html',//路径是以index.html为基础，因为模板放在上面
+		//	controller: 'pageControllers'
+		//})
+			.otherwise({
 			redirectTo: '/in_theaters/1'
 		});
 	}])
@@ -21,11 +26,13 @@
 			$scope.$location = $location;
 			$scope.type = 'in_theaters'
 			$scope.$watch('$location.path()',function(now){
-				console.log(now)
+				//console.log(now)
 				var type = now.split('/')[1];
 				$scope.type = type;
 
 			})
+
+			///v2/movie/subject/:id
 		}]
 	)
 	.directive('autoFocus',[function(){
