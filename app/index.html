@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN" ng-app="movies">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My AngularJS App</title>
-	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Mrhzj 影 评</title>
+	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="app.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">showMovies</a>
+			<a class="navbar-brand" href="#">MRHZj 影 评</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
@@ -39,9 +39,9 @@
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
-				<li class="active"><a href="#/hot">正在热映 <span class="sr-only">(current)</span></a></li>
-				<li><a href="#/coming">即将上映</a></li>
-				<li><a href="#/top250">TOP250</a></li>
+				<li class="active"><a href="#/hot/1">正在热映 <span class="sr-only">(current)</span></a></li>
+				<li><a href="#/coming/1">即将上映</a></li>
+				<li><a href="#/top250/1">TOP250</a></li>
 			</ul>
 
 		</div>
@@ -49,14 +49,14 @@
 	</div>
 </div>
 
-
-
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="service/http.js"></script>
+  <script src="controller/page.js"></script>
   <script src="app.js"></script>
-  <script src="hot/main.js"></script>
+<!--  <script src="hot/main.js"></script>
   <script src="top250/main.js"></script>
-  <script src="coming/main.js"></script>
+  <script src="coming/main.js"></script>-->
 
 </body>
 </html>

@@ -1,0 +1,45 @@
+<h1 class="title">{{title}}</h1>
+<ul class="list-group">
+	<li class="list-group-item" ng-repeat="item in data">
+		<a href="{{item.alt}}"></a>
+		<span class="badge">{{item.rating.average}}</span>
+		<div class="bs-example" data-example-id="default-media">
+			<div class="media" >
+				<div class="media-left">
+					<a href="#">
+						<img class="media-object" src="{{item.images.small}}" alt="{{item.title}}"  style="width: 64px; height: 100px;">
+					</a>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading">{{item.title}}</h4>
+					<p>类型 : <span>{{item.genres.join('、')}}</span> &nbsp;&nbsp;上映年份 :<span>{{item.year}}</span></p>
+					<p>导演 : <span ng-repeat="role in item.directors">{{role.name}} <i ng-if="!$last">、</i></span></p>
+					<p>主演 : <span ng-repeat="role in item.casts">{{role.name }}<i ng-if="!$last">、</i></span></p>
+				</div>
+			</div>
+		</div>
+	</li>
+</ul>
+
+<nav aria-label="Page navigation">
+	<p>总 共 {{total}} 条 记 录 , 共 {{totalPage}} 页</p>
+	<p class="text-center">  第 {{page}} 页</p>
+	<ul class="pagination">
+		<li>
+			<a  aria-label="Previous" ng-click="checkPage(0)">
+				<span aria-hidden="true">&laquo;</span>
+			</a>
+		</li>
+		<li><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+		<li><a href="#">5</a></li>
+		<li>
+			<a  aria-label="Next" ng-click="checkPage(1)">
+				<span aria-hidden="true">&raquo;</span>
+			</a>
+		</li>
+	</ul>
+</nav>
+

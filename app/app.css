@@ -131,3 +131,14 @@ form.navbar-form {
 		padding: 15px 10px;
 	}
 }
+
+h1.title {
+	padding-bottom: 20px;
+	border-bottom:  1px solid #ccc;
+}
+/*分页栏居中*/
+.pagination {
+	width: 235px;
+	margin: 50px auto;
+	display: block;
+}
