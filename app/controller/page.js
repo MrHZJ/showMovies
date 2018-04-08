@@ -26,7 +26,7 @@
 		$scope.status = $routeParams.type;
 		$scope.page = 1;
 		//console.log($scope.status);
-
+		$scope.load = true;
 		function ajax(start,cbFn){
 			//console.log($routeParams);
 			var type = $routeParams.type;
@@ -52,7 +52,12 @@
 				ajax((($routeParams.page - 1) * $scope.count),
 					function(res){
 						//console.log(JSON.stringify(res));
+						if(!res){
+							return
+						}
 						var res = res;
+
+						$scope.load = false;
 						$scope.total = res.total;
 						$scope.title = res.title;
 						$scope.totalPage = Math.ceil(res.total / $scope.count);

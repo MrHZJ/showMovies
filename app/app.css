@@ -146,13 +146,23 @@ h1.title {
 
 /*loading*/
 #loading{
-	background-color: rgba(0,0,0,0.6);
+	/*background-color: rgba(0,0,0,0.6);*/
 	height: 100%;
 	width: 100%;
 	position: fixed;
-	z-index: 99999;
+	z-index: 1;
 	margin-top: 0px;
 	top: 0px;
+}
+#loading h2 {
+	text-align: center;
+	color: #428bca;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 233px auto;
+	text-indent: -10em;
+	font-size: 20px;
 }
 #loading-center{
 	width: 100%;
@@ -166,18 +176,18 @@ h1.title {
 	height: 150px;
 	width: 150px;
 	margin-top: -75px;
-	margin-left: -75px;
+	margin-left: -175px;
 	-ms-transform: rotate(45deg);
 	-webkit-transform: rotate(45deg);
 	transform: rotate(45deg);
 }
 .object{
-	width: 20px;
-	height: 20px;
-	background-color: #FFF;
+	width: 15px;
+	height: 15px;
+	background-color: #428bca;
 	position: absolute;
-	left: 65px;
-	top: 65px;
+	left: 30px;
+	top: 30px;
 	-moz-border-radius: 50% 50% 50% 50%;
 	-webkit-border-radius: 50% 50% 50% 50%;
 	border-radius: 50% 50% 50% 50%;
@@ -237,10 +247,10 @@ h1.title {
 #object_big{
 
 	position: absolute;
-	width: 50px;
-	height: 50px;
-	left: 50px;
-	top: 50px;
+	width: 30px;
+	height: 30px;
+	left: 19px;
+	top: 20px;
 	-webkit-animation: object_big 2s infinite;
 	animation: object_big 2s infinite;
 	-webkit-animation-delay: 0.5s;
@@ -259,90 +269,90 @@ h1.title {
 
 }
 @-webkit-keyframes object_one {
-	50% { -webkit-transform: translate(-65px,-65px)  ; }
+	50% { -webkit-transform: translate(-30px,-30px)  ; }
 }
 @keyframes object_one {
 	50% {
-		transform: translate(-65px,-65px) ;
-		-webkit-transform: translate(-65px,-65px) ;
+		transform: translate(-30px,-30px) ;
+		-webkit-transform: translate(-30px,-30px) ;
 	}
 
 }
 @-webkit-keyframes object_two {
-	50% { -webkit-transform: translate(0,-65px) ; }
+	50% { -webkit-transform: translate(0,-30px) ; }
 }
 
 @keyframes object_two {
 	50% {
-		transform: translate(0,-65px) ;
-		-webkit-transform: translate(0,-65px) ;
+		transform: translate(0,-30px) ;
+		-webkit-transform: translate(0,-30px) ;
 	}
 
 }
 @-webkit-keyframes object_three {
-	50% { -webkit-transform: translate(65px,-65px) ; }
+	50% { -webkit-transform: translate(30px,-30px) ; }
 }
 
 @keyframes object_three {
 	50% {
-		transform: translate(65px,-65px) ;
-		-webkit-transform: translate(65px,-65px) ;
+		transform: translate(30px,-30px) ;
+		-webkit-transform: translate(30px,-30px) ;
 	}
 }
 
 @-webkit-keyframes object_four {
 
-	50% { -webkit-transform: translate(65px,0) ; }
+	50% { -webkit-transform: translate(30px,0) ; }
 
 }
 @keyframes object_four {
 	50% {
-		transform: translate(65px,0) ;
-		-webkit-transform: translate(65px,0) ;
+		transform: translate(30px,0) ;
+		-webkit-transform: translate(30px,0) ;
 	}
 }
 @-webkit-keyframes object_five {
-	50% { -webkit-transform: translate(65px,65px) ; }
+	50% { -webkit-transform: translate(30px,30px) ; }
 }
 @keyframes object_five {
 	50% {
-		transform: translate(65px,65px) ;
-		-webkit-transform: translate(65px,65px) ;
+		transform: translate(30px,30px) ;
+		-webkit-transform: translate(30px,30px) ;
 	}
 }
 @-webkit-keyframes object_six {
 
-	50% { -webkit-transform: translate(0,65px) ; }
+	50% { -webkit-transform: translate(0,30px) ; }
 
 }
 @keyframes object_six {
 	50% {
-		transform:  translate(0,65px) ;
-		-webkit-transform:  translate(0,65px) ;
+		transform:  translate(0,30px) ;
+		-webkit-transform:  translate(0,30px) ;
 	}
 }
 @-webkit-keyframes object_seven {
 
-	50% { -webkit-transform: translate(-65px,65px) ; }
+	50% { -webkit-transform: translate(-30px,30px) ; }
 
 }
 @keyframes object_seven {
 	50% {
-		transform: translate(-65px,65px) ;
-		-webkit-transform: translate(-65px,65px) ;
+		transform: translate(-30px,30px) ;
+		-webkit-transform: translate(-30px,30px) ;
 	}
 
 }
 @-webkit-keyframes object_eight {
 
-	50% { -webkit-transform: translate(-65px,0) ; }
+	50% { -webkit-transform: translate(-30px,0) ; }
 
 }
 
 @keyframes object_eight {
 	50% {
-		transform: translate(-65px,0) ;
-		-webkit-transform: translate(-65px,0) ;
+		transform: translate(-30px,0) ;
+		-webkit-transform: translate(-30px,0) ;
 	}
 
 }
