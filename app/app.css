@@ -141,4 +141,5 @@ h1.title {
 	width: 235px;
 	margin: 50px auto;
 	display: block;
+	cursor: pointer;
 }
