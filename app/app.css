@@ -164,7 +164,7 @@ li.list-group-item {
 	left: 0;
 	right: 0;
 	margin: 233px auto;
-	text-indent: -10em;
+	text-indent: -18em;
 	font-size: 20px;
 }
 #loading-center{
@@ -179,7 +179,7 @@ li.list-group-item {
 	height: 150px;
 	width: 150px;
 	margin-top: -75px;
-	margin-left: -175px;
+	margin-left: -269px;
 	-ms-transform: rotate(45deg);
 	-webkit-transform: rotate(45deg);
 	transform: rotate(45deg);
