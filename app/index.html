@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="app.css">
 </head>
-<body>
+<body ng-controller="app.controlller">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -35,14 +35,13 @@
 </nav>
 
 	<div class="container-fluid">
-	<div class="row">
+	<div class="row" ng-app="menu">
 		<div class="col-sm-3 col-md-2 sidebar">
-			<ul class="nav nav-sidebar">
-				<li class="active"><a href="#/hot/1">正在热映 <span class="sr-only">(current)</span></a></li>
-				<li><a href="#/coming/1">即将上映</a></li>
-				<li><a href="#/top250/1">TOP250</a></li>
+			<ul class="nav nav-sidebar" id="menu">
+				<li ng-class="{active:type === 'in_theaters'}"><a href="#/in_theaters/1">正在热映 <span class="sr-only">(current)</span></a></li>
+				<li ng-class="{active:type === 'coming_soon'}"><a href="#/coming_soon/1">即将上映</a></li>
+				<li ng-class="{active:type === 'top250'}"><a href="#/top250/1">TOP250</a></li>
 			</ul>
-
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view></div>>
 	</div>
@@ -53,6 +52,26 @@
   <script src="service/http.js"></script>
   <script src="controller/page.js"></script>
   <script src="app.js"></script>
+	<div class="spinner">
+		<div class="spinner-container container1">
+			<div class="circle1"></div>
+			<div class="circle2"></div>
+			<div class="circle3"></div>
+			<div class="circle4"></div>
+		</div>
+		<div class="spinner-container container2">
+			<div class="circle1"></div>
+			<div class="circle2"></div>
+			<div class="circle3"></div>
+			<div class="circle4"></div>
+		</div>
+		<div class="spinner-container container3">
+			<div class="circle1"></div>
+			<div class="circle2"></div>
+			<div class="circle3"></div>
+			<div class="circle4"></div>
+		</div>
+	</div>
 <!--  <script src="hot/main.js"></script>
   <script src="top250/main.js"></script>
   <script src="coming/main.js"></script>-->

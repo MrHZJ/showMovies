@@ -14,7 +14,8 @@
 	//}]);
 
 	pageController.controller('pageControllers',["$scope",'$routeParams','pageServices','$route','$location','$timeout',function($scope,$routeParams,pageServices,$route,$location,$timeout){
-		console.log($routeParams);
+		//console.log($routeParams);
+
 		//$scope.text = $routeParams.type;
 
 		$scope.title = '';
@@ -26,12 +27,14 @@
 		$scope.page = 1;
 		//console.log($scope.status);
 
-		function ajax(start,count,cbFn){
+		function ajax(start,cbFn){
+			//console.log($routeParams);
+			var type = $routeParams.type;
 			var parames = {
-				url : '//api.douban.com/v2/movie/in_theaters',
+				url : '//api.douban.com/v2/movie/'+ type,
 				data : {
 					"start" : start,
-					"count" : count
+					"count" : $scope.count
 				},
 				cbKey : 'callback',
 				cbVal : 'cb',
@@ -47,7 +50,6 @@
 			$scope.page = $routeParams.page;
 			$scope.$http = pageServices.$http(
 				ajax((($routeParams.page - 1) * $scope.count),
-					$scope.count,
 					function(res){
 						//console.log(JSON.stringify(res));
 						var res = res;
@@ -69,7 +71,7 @@
 							for(var i = 0; i < $scope.count ; i++){
 								$scope.numBtn.push(i + $scope.totalPage - $scope.count + 1);
 							}
-							console.log($scope.numBtn);
+							//console.log($scope.numBtn);
 							$timeout(function(){
 								$scope.numBtn = [];
 								for(var i = 0; i < $scope.count ; i++){
@@ -81,11 +83,13 @@
 							for(var i = 0; i < $scope.count ; i++){
 								$scope.numBtn.push(pageNum - Math.floor($scope.count / 2) + i);
 							}
-							console.log($scope.numBtn);
+							//console.log($scope.numBtn);
 						}
 
 						$scope.$apply();
-					}));
+					}
+				)
+			);
 		});
 
 
@@ -130,7 +134,7 @@
 
 
 		$scope.pageNum = function(pageNum){
-			console.log(pageNum);
+			//console.log(pageNum);
 			//console.log($scope.totalPage - Math.floor($scope.count / 2));
 			var type = $routeParams.type;
 
