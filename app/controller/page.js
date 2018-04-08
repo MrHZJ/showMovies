@@ -13,7 +13,7 @@
 	//	});
 	//}]);
 
-	pageController.controller('pageControllers',["$scope",'$routeParams','pageServices','$route','$location',function($scope,$routeParams,pageServices,$route,$location){
+	pageController.controller('pageControllers',["$scope",'$routeParams','pageServices','$route','$location','$timeout',function($scope,$routeParams,pageServices,$route,$location,$timeout){
 		console.log($routeParams);
 		//$scope.text = $routeParams.type;
 
@@ -41,6 +41,8 @@
 		}
 
 		$scope.$location = $location;
+		$scope.numBtn = [];
+
 		$scope.$watch('$location.path()',function(now){
 			$scope.page = $routeParams.page;
 			$scope.$http = pageServices.$http(
@@ -53,6 +55,35 @@
 						$scope.title = res.title;
 						$scope.totalPage = Math.ceil(res.total / $scope.count);
 						$scope.data = res.subjects;
+
+						var pageNum = $routeParams.page;
+
+						if(pageNum <= Math.ceil( $scope.count / 2) ){//1 2 3
+							$scope.numBtn = [];
+							for(var i = 0; i < $scope.count ; i++){
+								$scope.numBtn.push(i + 1);
+							}
+						}
+						else if( pageNum > ($scope.totalPage - Math.floor($scope.count / 2) )){
+							$scope.numBtn = [];
+							for(var i = 0; i < $scope.count ; i++){
+								$scope.numBtn.push(i + $scope.totalPage - $scope.count + 1);
+							}
+							console.log($scope.numBtn);
+							$timeout(function(){
+								$scope.numBtn = [];
+								for(var i = 0; i < $scope.count ; i++){
+									$scope.numBtn.push(i + $scope.totalPage - $scope.count + 1);
+								}
+							},100)
+						}else{
+							$scope.numBtn = [];
+							for(var i = 0; i < $scope.count ; i++){
+								$scope.numBtn.push(pageNum - Math.floor($scope.count / 2) + i);
+							}
+							console.log($scope.numBtn);
+						}
+
 						$scope.$apply();
 					}));
 		});
@@ -95,10 +126,12 @@
 			//	))
 		};
 
-		//num-btn
-		$scope.numBtn = [1,2,3,4,5];
+
+
+
 		$scope.pageNum = function(pageNum){
 			console.log(pageNum);
+			//console.log($scope.totalPage - Math.floor($scope.count / 2));
 			var type = $routeParams.type;
 
 			$route.updateParams({page : pageNum ,type:type});
