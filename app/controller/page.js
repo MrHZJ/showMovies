@@ -12,7 +12,6 @@
 	//		controller: 'pageControllers'
 	//	});
 	//}]);
-
 	pageController.controller('pageControllers',["$scope",'$routeParams','pageServices','$route','$location','$timeout',function($scope,$routeParams,pageServices,$route,$location,$timeout){
 		//console.log($routeParams);
 
@@ -32,15 +31,16 @@
 		$scope.detailData = '';
 		function ajax(start,cbFn){
 			console.log($routeParams);
+
 			var type = $routeParams.type;
 			var id = $routeParams.id;
 			var url = '';
 			if(!id){
 				url = '//api.douban.com/v2/movie/'+ type;
-				$scope.detail = false;
+				$scope.detail = false;//不展示详情展示列表
 			}else {
-				$scope.detail = true;
 				url = '//api.douban.com/v2/movie/'+ 'subject/'+ id;
+				$scope.detail = true;//只是展示详情
 			}
 			var parames = {
 				//url : '//api.douban.com/v2/movie/'+ 'subject/4920389',
@@ -136,7 +136,7 @@
 			//		$scope.count,
 			//		function(res){
 			//			//0 -->prev 1--->next
-            //
+			//
 			//			//console.log(num);
 			//			console.log('页数 ：' + page);
 			//			console.log('start : ' +((page - 1) * $scope.count));
@@ -169,3 +169,4 @@
 
 	}]);
 })(angular);
+
